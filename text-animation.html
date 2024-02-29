@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>This is Epic GSAP</title>
 
     <style>
       body {
@@ -23,7 +23,7 @@
         background-color: #101615;
       }
       .content-box {
-        height: 50rem;
+        height: 45rem;
         min-height: 100vh;
         position: sticky;
         width: 100%;
@@ -33,7 +33,11 @@
         justify-content: center;
         align-items: center;
       }
-
+      h1 {
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
       .text-box {
         position: relative;
         width: 400px;
@@ -78,19 +82,20 @@
     </style>
   </head>
   <body>
-    <section class="main">
+    <section class="main" id="scroll-section">
       <div class="content-box">
         <div class="text-wrapper">
+          <h1>Start Scrolling</h1>
           <div class="text-box">
             <h2 id="text1">This</h2>
             <h2 id="text2">Is</h2>
             <h2 id="text3">Epic</h2>
             <h2 id="text4">GSAP</h2>
 
-            <div class="circle" id="red">0</div>
-            <div class="circle" id="orange">0</div>
-            <div class="circle" id="green">0</div>
-            <div class="circle" id="blue">0</div>
+            <div class="circle shape" id="red">0</div>
+            <div class="circle shape" id="orange">0</div>
+            <div class="circle shape" id="green">0</div>
+            <div class="circle shape" id="blue">0</div>
 
             <svg viewBox="0 0 400 400" width="440px" height="440px">
               <path
@@ -202,6 +207,43 @@
         opacity: 1,
         motionPath: "#circlePath",
         repeat: -1,
+      });
+
+      let shapeTimeline1 = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#scroll-section",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1,
+          // markers: true,
+        },
+      });
+      shapeTimeline1.to("#red", {
+        "border-radius": "1px",
+      });
+      shapeTimeline1.from("#red", {
+        "border-radius": "50%",
+      });
+
+      shapeTimeline1.to("#orange", {
+        "border-radius": "1px",
+      });
+      shapeTimeline1.from("#orange", {
+        "border-radius": "50%",
+      });
+
+      shapeTimeline1.to("#green", {
+        "border-radius": "1px",
+      });
+      shapeTimeline1.from("#green", {
+        "border-radius": "50%",
+      });
+
+      shapeTimeline1.to("#blue", {
+        "border-radius": "1px",
+      });
+      shapeTimeline1.from("#blue", {
+        "border-radius": "50%",
       });
     </script>
   </body>
